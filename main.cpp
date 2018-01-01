@@ -6,8 +6,6 @@
 #include<iostream>
 #include<assert.h>
 #include"DrawUtils.h"
-
-
 #include<vector>
 
 /*
@@ -29,7 +27,7 @@ unsigned char kbPrevState[SDL_NUM_SCANCODES] = { 0 };
 const unsigned char* kbState = NULL;
 
 // To get keyboard state
-const Uint8 *keyState;
+//const Uint8 *keyState;
 
 // To regulate frame rate
 int previousTime = 0;
@@ -87,9 +85,8 @@ int main(void)
 
 
 	//********** GAME LOOP *************************************************************
-	kbState = SDL_GetKeyboardState(NULL);
-
 	while (!shouldExit) {
+		kbState = SDL_GetKeyboardState(NULL);// We want status of all the keys
 
 		// Find out how many seconds have past since last loop iteration
 		previousTime = currentTime;
@@ -110,67 +107,30 @@ int main(void)
 			}
 		}
 
-		keyState = SDL_GetKeyboardState(NULL); // We want status of all the keys
 
-		// Take action if any of arrowkeys are pushed
-		if (keyState[SDL_SCANCODE_RIGHT]) {
-			//if(spritePos[0] < WINDOW_WIDTH - spriteSize[0])
-				//spritePos[0] += spriteSpeedX * deltaTime;
-		}
-		else if (keyState[SDL_SCANCODE_LEFT]) {
-			//if(spritePos[0] > 0)
-				//spritePos[0] -= spriteSpeedX * deltaTime;
-		}
-		else if (keyState[SDL_SCANCODE_UP]) {
-			//if(spritePos[1] > 0)
-				//spritePos[1] -= spriteSpeedX * deltaTime;
-		}
-		else if (keyState[SDL_SCANCODE_DOWN]) {
-			//if(spritePos[1] < WINDOW_HEIGHT - spriteSize[1])
-				//spritePos[1] += spriteSpeedX * deltaTime;
-		}
-
-		// Register any keys pressed in tracking array
-		//keyStates->setKeyPressed();
-		
-
-		// Loop through key states array and get key that was pressed
-		/**
-		for(int i = 0; i < 128; i++){
-			if(keyStates->states[i] == 1){
-				std::string temp = SDL_GetKeyName(i);
-				//printf(temp.c_str());
-				if(temp.compare("Return") == 0){
-					//printf("Return Key pressed\n");
-				}else if(temp.compare("Space") == 0){
-					if(testing.size() < GD::MAX_STRING_SIZE)
-						testing.append(" ");
-				}else if(temp.compare("Backspace") == 0){
-					testing = testing.substr(0, testing.size()-1);
-				}else{
-					if(testing.size() < GD::MAX_STRING_SIZE)
-						testing.append(SDL_GetKeyName(i));
-				}
-				//printf(testing.c_str());
-				//printf("\n");
-			}
-		}
-		**/
-
-		// Take action if any of arrowkeys are pushed
+		// Take action if any keys are pressed
 		if (kbState[SDL_SCANCODE_RIGHT]) {
-			//printf("Right arrow pressed\n");
+			printf("Right arrow pressed\n");
 		}
 		else if (kbState[SDL_SCANCODE_LEFT]) {
-			//printf("Left arrow pressed\n");
+			printf("Left arrow pressed\n");
 		}
 		else if (kbState[SDL_SCANCODE_UP]) {
-			//printf("Up arrow pressed\n");
+			printf("Up arrow pressed\n");
 		}
 		else if (kbState[SDL_SCANCODE_DOWN]) {
-			//printf("Down arrow pressed\n");
+			printf("Down arrow pressed\n");
 		}else if(kbState[SDL_SCANCODE_F1]){
 			//printf("F1 pressed\n");
+		}
+		else if(kbState[SDL_SCANCODE_A] && !kbPrevState[SDL_SCANCODE_A]){
+			printf("A key pressed\n");
+		}
+		else if(kbState[SDL_SCANCODE_B] && !kbPrevState[SDL_SCANCODE_B]){
+			printf("B key pressed\n");
+		}
+		else if(kbState[SDL_SCANCODE_C] && !kbPrevState[SDL_SCANCODE_C]){
+			printf("C key pressed\n");
 		}
 		else{
 			//textBlock->stop();
