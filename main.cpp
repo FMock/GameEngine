@@ -6,6 +6,7 @@
 #include<iostream>
 #include<assert.h>
 #include"DrawUtils.h"
+#include"KeyInfo.h"
 #include<vector>
 
 /*
@@ -33,6 +34,7 @@ const unsigned char* kbState = NULL;
 int previousTime = 0;
 int currentTime = 0;
 float deltaTime = 0.0f;
+float noKeyPressTime = 0.0f;
 
 int main(void)
 {
@@ -108,32 +110,223 @@ int main(void)
 		}
 
 
-		// Take action if any keys are pressed
-		if (kbState[SDL_SCANCODE_RIGHT]) {
-			printf("Right arrow pressed\n");
-		}
-		else if (kbState[SDL_SCANCODE_LEFT]) {
-			printf("Left arrow pressed\n");
-		}
-		else if (kbState[SDL_SCANCODE_UP]) {
-			printf("Up arrow pressed\n");
-		}
-		else if (kbState[SDL_SCANCODE_DOWN]) {
-			printf("Down arrow pressed\n");
-		}else if(kbState[SDL_SCANCODE_F1]){
-			//printf("F1 pressed\n");
-		}
-		else if(kbState[SDL_SCANCODE_A] && !kbPrevState[SDL_SCANCODE_A]){
-			printf("A key pressed\n");
+		// Take action if any keys are pressed. check SDL SCANCODES https://wiki.libsdl.org/SDL_Scancode
+		if(kbState[SDL_SCANCODE_A] && !kbPrevState[SDL_SCANCODE_A]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("A");
 		}
 		else if(kbState[SDL_SCANCODE_B] && !kbPrevState[SDL_SCANCODE_B]){
-			printf("B key pressed\n");
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("B");
 		}
 		else if(kbState[SDL_SCANCODE_C] && !kbPrevState[SDL_SCANCODE_C]){
-			printf("C key pressed\n");
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("C");
+		}
+		else if(kbState[SDL_SCANCODE_D] && !kbPrevState[SDL_SCANCODE_D]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("D");
+		}
+		else if(kbState[SDL_SCANCODE_E] && !kbPrevState[SDL_SCANCODE_E]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("E");
+		}
+		else if(kbState[SDL_SCANCODE_F] && !kbPrevState[SDL_SCANCODE_F]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("F");
+		}
+		else if(kbState[SDL_SCANCODE_G] && !kbPrevState[SDL_SCANCODE_G]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("G");
+		}
+		else if(kbState[SDL_SCANCODE_H] && !kbPrevState[SDL_SCANCODE_H]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("H");
+		}
+		else if(kbState[SDL_SCANCODE_I] && !kbPrevState[SDL_SCANCODE_I]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("I");
+		}
+		else if(kbState[SDL_SCANCODE_J] && !kbPrevState[SDL_SCANCODE_J]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("J");
+		}
+		else if(kbState[SDL_SCANCODE_K] && !kbPrevState[SDL_SCANCODE_K]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("K");
+		}
+		else if(kbState[SDL_SCANCODE_L] && !kbPrevState[SDL_SCANCODE_L]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("L");
+		}
+		else if(kbState[SDL_SCANCODE_M] && !kbPrevState[SDL_SCANCODE_M]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("M");
+		}
+		else if(kbState[SDL_SCANCODE_N] && !kbPrevState[SDL_SCANCODE_N]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("N");
+		}
+		else if(kbState[SDL_SCANCODE_O] && !kbPrevState[SDL_SCANCODE_O]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("O");
+		}
+		else if(kbState[SDL_SCANCODE_P] && !kbPrevState[SDL_SCANCODE_P]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("P");
+		}
+		else if(kbState[SDL_SCANCODE_Q] && !kbPrevState[SDL_SCANCODE_Q]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("Q");
+		}
+		else if(kbState[SDL_SCANCODE_R] && !kbPrevState[SDL_SCANCODE_R]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("R");
+		}
+		else if(kbState[SDL_SCANCODE_S] && !kbPrevState[SDL_SCANCODE_S]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("S");
+		}
+		else if(kbState[SDL_SCANCODE_T] && !kbPrevState[SDL_SCANCODE_T]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("T");
+		}
+		else if(kbState[SDL_SCANCODE_U] && !kbPrevState[SDL_SCANCODE_U]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("U");
+		}
+		else if(kbState[SDL_SCANCODE_V] && !kbPrevState[SDL_SCANCODE_V]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("V");
+		}
+		else if(kbState[SDL_SCANCODE_W] && !kbPrevState[SDL_SCANCODE_W]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("W");
+		}
+		else if(kbState[SDL_SCANCODE_X] && !kbPrevState[SDL_SCANCODE_X]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("X");
+		}
+		else if(kbState[SDL_SCANCODE_Y] && !kbPrevState[SDL_SCANCODE_Y]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("Y");
+		}
+		else if(kbState[SDL_SCANCODE_Z] && !kbPrevState[SDL_SCANCODE_Z]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("Z");
+		}
+		else if(kbState[SDL_SCANCODE_0] && !kbPrevState[SDL_SCANCODE_0]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("0");
+		}
+		else if(kbState[SDL_SCANCODE_1] && !kbPrevState[SDL_SCANCODE_1]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("1");
+		}
+		else if(kbState[SDL_SCANCODE_2] && !kbPrevState[SDL_SCANCODE_2]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("2");
+		}
+		else if(kbState[SDL_SCANCODE_3] && !kbPrevState[SDL_SCANCODE_3]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("3");
+		}
+		else if(kbState[SDL_SCANCODE_4] && !kbPrevState[SDL_SCANCODE_4]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("4");
+		}
+		else if(kbState[SDL_SCANCODE_5] && !kbPrevState[SDL_SCANCODE_5]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("5");
+		}
+		else if(kbState[SDL_SCANCODE_6] && !kbPrevState[SDL_SCANCODE_6]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("6");
+		}
+		else if(kbState[SDL_SCANCODE_7] && !kbPrevState[SDL_SCANCODE_7]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("7");
+		}
+		else if(kbState[SDL_SCANCODE_8] && !kbPrevState[SDL_SCANCODE_8]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("8");
+		}
+		else if(kbState[SDL_SCANCODE_9] && !kbPrevState[SDL_SCANCODE_9]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("9");
+		}
+		else if(kbState[SDL_SCANCODE_BACKSPACE] && !kbPrevState[SDL_SCANCODE_BACKSPACE]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("");
+		}
+		else if(kbState[SDL_SCANCODE_RETURN] && !kbPrevState[SDL_SCANCODE_RETURN]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("");
+		}
+		else if(kbState[SDL_SCANCODE_LEFT] && !kbPrevState[SDL_SCANCODE_LEFT]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("LEFT");
+		}
+		else if(kbState[SDL_SCANCODE_RIGHT] && !kbPrevState[SDL_SCANCODE_RIGHT]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("RIGHT");
+		}
+		else if(kbState[SDL_SCANCODE_UP] && !kbPrevState[SDL_SCANCODE_UP]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("UP");
+		}
+		else if(kbState[SDL_SCANCODE_DOWN] && !kbPrevState[SDL_SCANCODE_DOWN]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("DOWN");
+		}
+		else if(kbState[SDL_SCANCODE_PERIOD] && !kbPrevState[SDL_SCANCODE_PERIOD]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey(".");
+		}
+		else if(kbState[SDL_SCANCODE_SEMICOLON] && !kbPrevState[SDL_SCANCODE_SEMICOLON]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey(";");
+		}
+		else if(kbState[SDL_SCANCODE_APOSTROPHE] && !kbPrevState[SDL_SCANCODE_APOSTROPHE]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("'");
+		}
+		else if(kbState[SDL_SCANCODE_COMMA] && !kbPrevState[SDL_SCANCODE_COMMA]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey(",");
+		}
+		else if(kbState[SDL_SCANCODE_SLASH] && !kbPrevState[SDL_SCANCODE_SLASH]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("/");
+		}
+		else if(kbState[SDL_SCANCODE_MINUS] && !kbPrevState[SDL_SCANCODE_MINUS]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("-");
+		}
+		else if(kbState[SDL_SCANCODE_EQUALS] && !kbPrevState[SDL_SCANCODE_EQUALS]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("=");
+		}
+		else if(kbState[SDL_SCANCODE_KP_PLUS] && !kbPrevState[SDL_SCANCODE_KP_PLUS]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("+");
+		}
+		else if(kbState[SDL_SCANCODE_SPACE] && !kbPrevState[SDL_SCANCODE_SPACE]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey(" ");
+		}
+		else if(kbState[SDL_SCANCODE_RSHIFT] && kbState[SDL_SCANCODE_1]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("!");
+		}
+		else if(kbState[SDL_SCANCODE_LSHIFT] && kbState[SDL_SCANCODE_1]){
+			noKeyPressTime = 0;
+			KeyInfo::setCurrentKey("!");
 		}
 		else{
-			//textBlock->stop();
+			noKeyPressTime += deltaTime;
+			if(noKeyPressTime > 0.5) // arbitrary amount of time chosen, pick a number that works well
+				KeyInfo::setCurrentKey(""); // only set after a certain amount of time has elapsed
 		}
 
 		// Game logic goes here.
@@ -157,8 +350,9 @@ int main(void)
 			//glDrawSprite(get_ready, 60, 200, newHighScoreWidth, newHighScoreHeight);
 
 		//*********** Troubleshooting *************************************************
-		//printf(stats.to_string().c_str());
-		//printf(gameData->to_string().c_str());
+		//printf("Current Key: %s\n", KeyInfo::getCurrentKey().c_str());
+		//printf("Previous Key: %s\n", KeyInfo::getPrevKey().c_str());
+
 		
 		// Present the most recent frame.
 		SDL_GL_SwapWindow(window);
