@@ -257,11 +257,11 @@ int main(void)
 		}
 		else if(kbState[SDL_SCANCODE_BACKSPACE] && !kbPrevState[SDL_SCANCODE_BACKSPACE]){
 			noKeyPressTime = 0;
-			KeyInfo::setCurrentKey("");
+			KeyInfo::setCurrentKey("BACKSPACE");
 		}
 		else if(kbState[SDL_SCANCODE_RETURN] && !kbPrevState[SDL_SCANCODE_RETURN]){
 			noKeyPressTime = 0;
-			KeyInfo::setCurrentKey("");
+			KeyInfo::setCurrentKey("RETURN");
 		}
 		else if(kbState[SDL_SCANCODE_LEFT] && !kbPrevState[SDL_SCANCODE_LEFT]){
 			noKeyPressTime = 0;
@@ -313,7 +313,7 @@ int main(void)
 		}
 		else if(kbState[SDL_SCANCODE_SPACE] && !kbPrevState[SDL_SCANCODE_SPACE]){
 			noKeyPressTime = 0;
-			KeyInfo::setCurrentKey(" ");
+			KeyInfo::setCurrentKey("SPACE");
 		}
 		else if(kbState[SDL_SCANCODE_RSHIFT] && kbState[SDL_SCANCODE_1]){
 			noKeyPressTime = 0;
