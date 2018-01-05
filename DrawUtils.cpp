@@ -8,7 +8,7 @@ Utilities for loading and drawing sprites.
 #include<assert.h>
 
 /* Load a file into an OpenGL texture, and return that texture. */
-GLuint glTexImageTGAFile(const char* filename, int* outWidth, int* outHeight)
+GLuint glTexImageTGAFile(const char* filename)
 {
 	const int BPP = 4;
 
@@ -80,12 +80,6 @@ GLuint glTexImageTGAFile(const char* filename, int* outWidth, int* outHeight)
 
 	free(bytes);
 
-	if (outWidth) {
-		*outWidth = imageWidth;
-	}
-	if (outHeight) {
-		*outHeight = imageHeight;
-	}
 	return tex;
 }
 

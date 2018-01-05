@@ -7,6 +7,7 @@
 #include<assert.h>
 #include"DrawUtils.h"
 #include"KeyInfo.h"
+#include"Sprite.h"
 #include<vector>
 
 /*
@@ -35,6 +36,9 @@ int previousTime = 0;
 int currentTime = 0;
 float deltaTime = 0.0f;
 float noKeyPressTime = 0.0f;
+
+// Sprites
+Sprite player;
 
 int main(void)
 {
@@ -83,6 +87,8 @@ int main(void)
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	player = Sprite(glTexImageTGAFile("images/magikarp.tga"), 32, 32, 128, 128);
 
 
 
@@ -343,6 +349,8 @@ int main(void)
 		//*********** Drawing **********************************************************
 		glClearColor(0, 0, 0, 1);  
 		glClear(GL_COLOR_BUFFER_BIT); // Be sure to always draw objects after this
+
+		player.draw();
 
 		// Should only be set at beginning after right arrow key pressed, but
 		// before textBlock is shown
