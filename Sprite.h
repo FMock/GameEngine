@@ -11,12 +11,14 @@ public:
 	Sprite(GLuint, int w, int h, int x, int y);
 	void draw();
 	void update(float);
+	int getXPos();
+	int getYPos();
 protected:
 	GLuint image;
-	int spriteWidth;
-	int spriteHeight;
-	int spriteXPos;
-	int spriteYPos;
+	int width;
+	int height;
+	int xPos;
+	int yPos;
 };
 
 #endif
