@@ -2,23 +2,24 @@
 #ifndef SPRITE_H
 #define SPRITE_H
 
-#include<GL/glew.h>
-#include"DrawUtils.h"
-
-class Sprite {
+class Sprite{
 public:
-	Sprite();
-	Sprite(GLuint, int w, int h, int x, int y);
-	void draw();
-	void update(float);
-	int getXPos();
-	int getYPos();
+	Sprite(void);
+	Sprite(float, float, int, int);
+	~Sprite(void);
+	virtual void draw()=0;
+	virtual void update(float)=0;
+	int getX()const;
+	int getY()const;
+	void setX(float);
+	void setY(float);
 protected:
-	GLuint image;
+	float x;
+	float change_x;
+	float y;
+	float change_y;
 	int width;
 	int height;
-	int xPos;
-	int yPos;
 };
 
 #endif

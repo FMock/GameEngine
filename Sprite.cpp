@@ -1,28 +1,24 @@
 #include"Sprite.h"
 
-// Required to make a default constructor to avoid compile error C2512
-Sprite::Sprite(){
-	image = glTexImageTGAFile("images/magikarp.tga");
-	width = 32;
-	height = 32;
-	xPos = 32;
-	yPos = 32;
+Sprite::Sprite(void){}
+Sprite::Sprite(float xPos, float yPos, int w, int h) : x(xPos), y(yPos), width(w), height(h){
+	change_x = 0.0;
+	change_y = 0.0;
+}
+Sprite::~Sprite(void){}
+
+int Sprite::getX()const{
+	return x;
 }
 
-Sprite::Sprite(GLuint i, int w, int h, int x, int y):image(i), width(w), height(h), xPos(x), yPos(y){}
-
-void Sprite::update(float deltaTime){
-
+int Sprite::getY()const{
+	return y;
 }
 
-void Sprite::draw(){
-	glDrawSprite(image, width, height, xPos, yPos);
+void Sprite::setX(float newX){
+	x = newX;
 }
 
-int Sprite::getXPos(){
-	return xPos;
-}
-
-int Sprite::getYPos(){
-	return yPos;
+void Sprite::setY(float newY){
+	y = newY;
 }

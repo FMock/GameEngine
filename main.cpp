@@ -7,8 +7,10 @@
 #include<assert.h>
 #include"DrawUtils.h"
 #include"KeyInfo.h"
-#include"Sprite.h"
+#include"Player.h"
+#include"Orc.h"
 #include<vector>
+#include<time.h>
 
 /*
 	main.cpp
@@ -37,8 +39,12 @@ int currentTime = 0;
 float deltaTime = 0.0f;
 float noKeyPressTime = 0.0f;
 
+// List to hold the Orcs
+std::vector<Orc *> orcs = std::vector<Orc *>();
+
 // Sprites
-Sprite player;
+Player player;
+Orc orc;
 
 int main(void)
 {
@@ -88,7 +94,18 @@ int main(void)
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	player = Sprite(glTexImageTGAFile("images/magikarp.tga"), 32, 32, 128, 128);
+	srand (time(NULL));
+
+	// Create the player and enemy objects (GL image, xPosition, yPosition, width, height)
+	player = Player(glTexImageTGAFile("images/magikarp.tga"), 300.0, 64.0, 64, 64);
+
+	// Dynamically create orc enemies and place in vector
+	for(int i = 0; i < 4; i++){
+		int xpos = rand() % 100 + 50;
+		int ypos = rand() % 400 + 50;
+		orcs.push_back(new Orc(glTexImageTGAFile("images/skeleton.tga"), xpos, ypos, 32, 64));
+		player.registerObserver(orcs.at(i)); // register the Orc as an observer of the player
+	}
 
 
 
@@ -272,10 +289,12 @@ int main(void)
 		else if(kbState[SDL_SCANCODE_LEFT] && !kbPrevState[SDL_SCANCODE_LEFT]){
 			noKeyPressTime = 0;
 			KeyInfo::setCurrentKey("LEFT");
+			player.moveLeft();
 		}
 		else if(kbState[SDL_SCANCODE_RIGHT] && !kbPrevState[SDL_SCANCODE_RIGHT]){
 			noKeyPressTime = 0;
 			KeyInfo::setCurrentKey("RIGHT");
+			player.moveRight();
 		}
 		else if(kbState[SDL_SCANCODE_UP] && !kbPrevState[SDL_SCANCODE_UP]){
 			noKeyPressTime = 0;
@@ -345,12 +364,17 @@ int main(void)
 		//fmod_sys->update(); // If you don't update the sound will play once
 
 		//gui->update(deltaTime);
+
+		player.update(deltaTime);
 		
 		//*********** Drawing **********************************************************
 		glClearColor(0, 0, 0, 1);  
 		glClear(GL_COLOR_BUFFER_BIT); // Be sure to always draw objects after this
 
 		player.draw();
+		for(int i = 0; i < 4; i++){
+			orcs.at(i)->draw();
+		}
 
 		// Should only be set at beginning after right arrow key pressed, but
 		// before textBlock is shown
